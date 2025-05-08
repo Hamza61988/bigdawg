@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   const { email, password } = await req.json();
 
  
-  if (email === 'hamza' && password === '123456738') {
+  if (email === 'hamza' && password === '12345678') {
     return NextResponse.json({ message: 'Login successful' });
   }
 
