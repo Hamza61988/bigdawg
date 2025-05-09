@@ -10,7 +10,7 @@ const COLORS = ['#1890ff', '#00c49f'];
 
 export default function UnitsSoldChart() {
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer width="100%" height="100%">
       <PieChart>
         <Pie
           data={data}

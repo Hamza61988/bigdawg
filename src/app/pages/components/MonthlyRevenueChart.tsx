@@ -18,7 +18,7 @@ const data = [
 
 export default function MonthlyRevenueChart() {
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer width="100%" height="100%">
       <AreaChart data={data}>
         <XAxis dataKey="month" />
         <YAxis tickFormatter={(value) => `${(value / 1000).toFixed(1)}k`} />

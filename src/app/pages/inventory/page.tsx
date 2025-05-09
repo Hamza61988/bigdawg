@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from "react";
 import { CgDanger } from "react-icons/cg";
@@ -95,51 +95,55 @@ export default function Dashboard() {
         <p>1 product is running low on stock and needs to be restocked.</p>
       </div>
 
-      <div className="flex items-center gap-2 border w-80 mt-4 border-gray-300 rounded px-2 py-1">
-          <SlMagnifier className="text-gray-500" />
-          <input
-            type="text"
-            placeholder="Search by name..."
-            className="outline-none w-full"
-            value={input}
-            onChange={handleSearch}
-          />
-        </div>
+      {/* Search Box */}
+      <div className="flex items-center gap-2 border w-full sm:w-80 mt-4 border-gray-300 rounded px-2 py-1">
+        <SlMagnifier className="text-gray-500" />
+        <input
+          type="text"
+          placeholder="Search by name..."
+          className="outline-none w-full"
+          value={input}
+          onChange={handleSearch}
+        />
+      </div>
 
       {/* Search + Table */}
-      <div className="bg-white mt-4 rounded shadow">
-      
-
-       
-
-        {/* Table */}
-        <div className="mt-3 border rounded border-gray-300">
-          <div className="grid p-4 bg-gray-100 grid-cols-8 gap-4 font-semibold text-sm">
-            <div>Name</div>
-            <div>Brand</div>
-            <div>Type</div>
-            <div>IMEI</div>
-            <div>Price</div>
-            <div>Cost</div>
-            <div>Profit</div>
-            <div>Stock</div>
-          </div>
-
-          {filteredData.map((e, i) => (
-            <div key={i}>
-              <div className="grid p-4 hover:bg-gray-50 grid-cols-8 gap-4 text-sm">
-                <div>{e.Name}</div>
-                <div>{e.Brand}</div>
-                <div>{e.Type}</div>
-                <div className="break-words max-w-[150px]">{e.Imei}</div>
-                <div>${e.Price}</div>
-                <div>${e.Cost}</div>
-                <div>${e.profit}</div>
-                <div>{e.stock}</div>
-              </div>
-              <hr className="border-gray-200" />
+      <div className="bg-white mt-4 p-2 rounded shadow">
+        {/* Table with scroll on small screens */}
+        <div className="overflow-x-auto">
+          <div className="mt-3 border rounded border-gray-300">
+            {/* Header */}
+            <div className="grid p-4 bg-gray-100 grid-cols-1 sm:grid-cols-8 gap-4 font-semibold text-sm">
+              <div>Name</div>
+              <div>Brand</div>
+              <div>Type</div>
+              <div>IMEI</div>
+              <div>Price</div>
+              <div>Cost</div>
+              <div>Profit</div>
+              <div>Stock</div>
             </div>
-          ))}
+
+            {/* Rows */}
+            {filteredData.map((e, i) => (
+              <div key={i}>
+                <div className="grid p-4 hover:bg-gray-50 grid-cols-1 sm:grid-cols-8 gap-4 text-sm">
+                  <div>{e.Name}</div>
+                  <div>{e.Brand}</div>
+                  <div>{e.Type}</div>
+                  <div className="break-words max-w-[150px]">{e.Imei}</div>
+                  <div>${e.Price}</div>
+                  <div>${e.Cost}</div>
+                  <div>${e.profit}</div>
+                  <div>{e.stock}</div>
+                </div>
+                <hr className="border-gray-200" />
+              </div>
+            ))}
+            {filteredData.length === 0 && (
+              <div className="p-4 text-center text-gray-500">No products found</div>
+            )}
+          </div>
         </div>
       </div>
     </div>
