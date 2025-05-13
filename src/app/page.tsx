@@ -28,8 +28,7 @@ export default function Login() {
       const data = await res.json();
   
       if (res.ok) {
-        // Store the user data (for example, user name)
-        localStorage.setItem('user', JSON.stringify({ name: email })); // You can also pass the real user data here
+        localStorage.setItem('user', JSON.stringify({ name: email }));
   
         setMessage("✅ Login successful!");
         router.push("/pages/dashbaord"); // ✅ Redirect on success

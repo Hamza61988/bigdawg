@@ -3,8 +3,12 @@ import React, { Suspense } from 'react';
 import { SlMagnifier } from 'react-icons/sl';
 import { ReactElement } from 'react';
 import dynamic from 'next/dynamic';
+import { FaArrowDown } from "react-icons/fa6";
+import { FaPerson } from "react-icons/fa6";
+import { LuDollarSign } from "react-icons/lu";
 
-// Lazy load charts with loading skeleton
+
+
 const SalesChart = dynamic(() => import('../components/SalesChart'), {
   ssr: false,
   loading: () => (
@@ -47,9 +51,9 @@ type RecentSales = {
 export default function Dashboard() {
   const data: ArrayType[] = [
     { topic: 'Total Sales', icon: <SlMagnifier />, price: 400000, percentage: 12, discription: 'compared to last month' },
-    { topic: 'Total Profit', icon: <SlMagnifier />, price: 60000, percentage: 8, discription: 'compared to last month' },
-    { topic: 'Low Stock Items', icon: <SlMagnifier />, price: 3, percentage: 0, discription: 'compared to last month' },
-    { topic: 'Customers', icon: <SlMagnifier />, price: 23, percentage: 5, discription: 'compared to last month' },
+    { topic: 'Total Profit', icon: <LuDollarSign />, price: 60000, percentage: 8, discription: 'compared to last month' },
+    { topic: 'Low Stock Items', icon: <FaArrowDown />, price: 3, percentage: 0, discription: 'compared to last month' },
+    { topic: 'Customers', icon: <FaPerson />, price: 23, percentage: 5, discription: 'compared to last month' },
   ];
 
   const Sell: SellingProduct[] = [
@@ -69,29 +73,31 @@ export default function Dashboard() {
       <h6 className="text-lg font-semibold">Dashboard</h6>
       <p className="text-gray-600">Overview of your mobile shop business</p>
 
-      {/* Metric Cards */}
-      <div className="flex flex-wrap gap-4 mt-5 justify-center sm:justify-start">
-        {data.map((e, i) => (
-          <div
-            key={i}
-            className="flex flex-col justify-between px-5 py-4 bg-white h-32 w-full sm:w-64 rounded-lg shadow hover:shadow-lg border border-gray-300"
-          >
-            <div className="flex items-center justify-between">
-              <h5 className="font-semibold text-sm">{e.topic}</h5>
-              <span className="bg-blue-100 text-blue-500 rounded-full p-2">
-                {e.icon}
-              </span>
-            </div>
-            <div className="flex items-center gap-2 mt-2">
-              <h4 className="font-medium text-base">Rs {e.price}</h4>
-              {e.percentage !== 0 && (
-                <h1 className="text-green-400 text-sm">{e.percentage}%</h1>
-              )}
-            </div>
-            <p className="text-xs text-gray-500 mt-1">{e.discription}</p>
-          </div>
-        ))}
+ 
+     {/* Metrics Cards */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-5">
+  {data.map((e, i) => (
+    <div
+      key={i}
+      className="flex flex-col justify-between px-5 py-4 bg-white h-32 rounded-lg shadow hover:shadow-lg border border-gray-300"
+    >
+      <div className="flex items-center justify-between">
+        <h5 className="font-semibold text-sm">{e.topic}</h5>
+        <span className="bg-blue-100 text-blue-500 rounded-full p-2">
+          {e.icon}
+        </span>
       </div>
+      <div className="flex items-center gap-2 mt-2">
+        <h4 className="font-medium text-base">Rs {e.price}</h4>
+        {e.percentage !== 0 && (
+          <h1 className="text-green-400 text-sm">{e.percentage}%</h1>
+        )}
+      </div>
+      <p className="text-xs text-gray-500 mt-1">{e.discription}</p>
+    </div>
+  ))}
+</div>
+
 
       {/* Charts */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
@@ -114,9 +120,9 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Bottom Sections */}
+   
       <div className="flex flex-col lg:flex-row gap-6 mt-8">
-        {/* Top Selling */}
+  
         <div className="bg-white p-4 sm:p-6 shadow border border-gray-300 rounded h-80 overflow-y-auto flex-1">
           <h2 className="text-xl font-bold mb-4">Top Selling Products</h2>
           {Sell.map((e, i) => (

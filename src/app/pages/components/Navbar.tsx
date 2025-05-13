@@ -16,12 +16,12 @@ export default function Navbar({ onToggleMenu }: { onToggleMenu: () => void }) {
 
   return (
     <div className="p-4 px-6 bg-gray-100 flex items-center justify-between flex-wrap sm:flex-nowrap gap-4 shadow-sm border-b border-gray-300">
-      {/* Logo */}
+    
       <div className="flex-shrink-0">
         <Image alt="next" src="/next.svg" width={120} height={40} />
       </div>
 
-      {/* Search Bar (Desktop only) */}
+     
       <div className="hidden sm:flex flex-1 justify-center">
         <div className="flex items-center gap-2 border border-gray-300 rounded px-2 py-1 w-64 bg-white">
           <SlMagnifier className="text-gray-500" />
@@ -33,15 +33,15 @@ export default function Navbar({ onToggleMenu }: { onToggleMenu: () => void }) {
         </div>
       </div>
 
-      {/* Icons + Menu Toggle */}
+      
       <div className="flex items-center gap-3 ml-auto">
-        {/* Shop Setting */}
-        <span className="outline px-2 sm:px-3 gap-1 outline-gray-300 hover:bg-blue-100 flex items-center rounded py-1 bg-white">
+        
+        <span className="outline   gap-1 outline-gray-300 hover:bg-blue-100 flex items-center rounded lg:p-2 p-3 bg-white">
           <MdOutlineFileUpload />
-          <button className="text-sm font-medium hidden sm:inline">Shop Setting</button>
+          <button className="text-sm font-medium hidden  sm:inline">Shop Setting</button>
         </span>
 
-        {/* Icons */}
+       
         <button className="hover:bg-blue-100 rounded p-2 text-2xl bg-white">
           <MdOutlinePerson />
         </button>
@@ -49,7 +49,7 @@ export default function Navbar({ onToggleMenu }: { onToggleMenu: () => void }) {
           <FiBell />
         </button>
 
-        {/* Mobile menu toggle */}
+      
         <button
           className="sm:hidden bg-gray-300 px-3 py-1 rounded text-sm"
           onClick={handleClick}
